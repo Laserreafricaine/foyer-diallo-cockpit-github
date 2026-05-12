@@ -1,0 +1,1305 @@
+{
+  "lines": [
+    {
+      "id": "salaire-mandiaye",
+      "type": "revenu",
+      "nom": "Salaire Mandiaye",
+      "categorie": "Salaire",
+      "proprietaire": "Mandiaye",
+      "defaultAmount": 4137,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 4137
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "variables-mandiaye",
+      "type": "revenu",
+      "nom": "Variables Mandiaye",
+      "categorie": "Variable",
+      "proprietaire": "Mandiaye",
+      "defaultAmount": 690,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 690
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "revenus-julie",
+      "type": "revenu",
+      "nom": "Revenus Julie",
+      "categorie": "Salaire",
+      "proprietaire": "Julie",
+      "defaultAmount": 910,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 910
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "caf",
+      "type": "revenu",
+      "nom": "CAF",
+      "categorie": "Allocation",
+      "proprietaire": "Foyer",
+      "defaultAmount": 496,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 496
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "cpam",
+      "type": "revenu",
+      "nom": "CPAM",
+      "categorie": "Allocation",
+      "proprietaire": "Foyer",
+      "defaultAmount": 160,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 160
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "revenus-annexes",
+      "type": "revenu",
+      "nom": "Revenus annexes",
+      "categorie": "Annexe",
+      "proprietaire": "Foyer",
+      "defaultAmount": 120,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 120
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "loyer-senegal",
+      "type": "revenu",
+      "nom": "Loyer Sénégal",
+      "categorie": "Passif",
+      "proprietaire": "Sénégal",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        },
+        {
+          "from": "2026-11",
+          "amount": 610
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "loyer-france",
+      "type": "revenu",
+      "nom": "Loyer France",
+      "categorie": "Passif",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "alimentation",
+      "type": "dépense",
+      "nom": "Alimentation",
+      "categorie": "Vie courante",
+      "proprietaire": "Foyer",
+      "defaultAmount": 900,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 900
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "energie-eau",
+      "type": "dépense",
+      "nom": "Consommation",
+      "categorie": "Consommation",
+      "proprietaire": "Foyer",
+      "defaultAmount": 382,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 382
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Énergie, eau, granulets"
+    },
+    {
+      "id": "assurances",
+      "type": "dépense",
+      "nom": "Assurances",
+      "categorie": "Charges",
+      "proprietaire": "Foyer",
+      "defaultAmount": 160,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 160
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "telephone-internet",
+      "type": "dépense",
+      "nom": "Téléphone / internet",
+      "categorie": "Charges",
+      "proprietaire": "Foyer",
+      "defaultAmount": 90,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 90
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "ecole-enfants",
+      "type": "dépense",
+      "nom": "École / enfants",
+      "categorie": "Enfants",
+      "proprietaire": "Enfants",
+      "defaultAmount": 300,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 300
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "transport",
+      "type": "dépense",
+      "nom": "Transport",
+      "categorie": "Mobilité",
+      "proprietaire": "Foyer",
+      "defaultAmount": 150,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 150
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "sante",
+      "type": "dépense",
+      "nom": "Santé",
+      "categorie": "Santé",
+      "proprietaire": "Foyer",
+      "defaultAmount": 80,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 80
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "depenses-non-planifiees",
+      "type": "dépense",
+      "nom": "Dépenses non planifiées",
+      "categorie": "Variable",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "credit-lissage-immo",
+      "type": "crédit",
+      "nom": "Lissage immo",
+      "categorie": "Immobilier",
+      "proprietaire": "Foyer",
+      "defaultAmount": 1031,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 1031
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "2045-12",
+      "notes": ""
+    },
+    {
+      "id": "credit-conso",
+      "type": "crédit",
+      "nom": "Prêt conso",
+      "categorie": "Consommation",
+      "proprietaire": "Foyer",
+      "defaultAmount": 798,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 798
+        },
+        {
+          "from": "2026-08",
+          "amount": 0
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "2026-07",
+      "notes": ""
+    },
+    {
+      "id": "credit-vehicule",
+      "type": "crédit",
+      "nom": "Véhicule",
+      "categorie": "Auto",
+      "proprietaire": "Foyer",
+      "defaultAmount": 196,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 196
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "2031-12",
+      "notes": ""
+    },
+    {
+      "id": "eco-pret",
+      "type": "crédit",
+      "nom": "Éco-prêt 0 %",
+      "categorie": "Travaux",
+      "proprietaire": "Foyer",
+      "defaultAmount": 36,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 36
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": ""
+    },
+    {
+      "id": "epa-salma",
+      "type": "épargne",
+      "nom": "Épargne Salma",
+      "categorie": "Enfant",
+      "proprietaire": "Enfants",
+      "defaultAmount": 50,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 50
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "epargne-salma"
+    },
+    {
+      "id": "epa-awa",
+      "type": "épargne",
+      "nom": "Épargne Awa",
+      "categorie": "Enfant",
+      "proprietaire": "Enfants",
+      "defaultAmount": 30,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 30
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "epargne-awa"
+    },
+    {
+      "id": "epa-salif",
+      "type": "épargne",
+      "nom": "Épargne Salif",
+      "categorie": "Enfant",
+      "proprietaire": "Enfants",
+      "defaultAmount": 30,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 30
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "epargne-salif"
+    },
+    {
+      "id": "pea",
+      "type": "épargne",
+      "nom": "PEA",
+      "categorie": "PEA",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        },
+        {
+          "from": "2026-08",
+          "amount": 500
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "500 €/mois dès août 2026",
+      "accountId": "pea-compte"
+    },
+    {
+      "id": "epa-livret-a-mandiaye",
+      "type": "épargne",
+      "nom": "Livret A Mandiaye",
+      "categorie": "Livret A",
+      "proprietaire": "Mandiaye",
+      "defaultAmount": 200,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 200
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "livret-a-mandiaye"
+    },
+    {
+      "id": "epa-livret-a-julie",
+      "type": "épargne",
+      "nom": "Livret A Julie",
+      "categorie": "Livret A",
+      "proprietaire": "Julie",
+      "defaultAmount": 200,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 200
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "livret-a-julie"
+    },
+    {
+      "id": "epa-pel-julie",
+      "type": "épargne",
+      "nom": "PEL Julie",
+      "categorie": "PEL",
+      "proprietaire": "Julie",
+      "defaultAmount": 50,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 50
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "2,5 %, fin 2029",
+      "accountId": "pel-julie"
+    },
+    {
+      "id": "epa-pee",
+      "type": "épargne",
+      "nom": "PEE",
+      "categorie": "PEE",
+      "proprietaire": "Mandiaye",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Mise à jour trimestrielle",
+      "accountId": "pee"
+    },
+    {
+      "id": "epa-locatif",
+      "type": "épargne",
+      "nom": "Investissement locatif",
+      "categorie": "Immobilier",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [
+        {
+          "from": "2026-05",
+          "amount": 0
+        }
+      ],
+      "overrides": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "",
+      "accountId": "locatif"
+    },
+    {
+      "id": "line-maison",
+      "type": "dépense",
+      "nom": "Maison",
+      "categorie": "Maison",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Bricolage, électroménager, entretien courant"
+    },
+    {
+      "id": "line-loisirs",
+      "type": "dépense",
+      "nom": "Loisirs",
+      "categorie": "Loisirs",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Sorties, sport, culture, vacances"
+    },
+    {
+      "id": "line-senegal",
+      "type": "dépense",
+      "nom": "Sénégal",
+      "categorie": "Sénégal",
+      "proprietaire": "Sénégal",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Envoi famille, achats Sénégal"
+    },
+    {
+      "id": "line-dons",
+      "type": "dépense",
+      "nom": "Dons, Aumône",
+      "categorie": "Dons",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Dons, zakat, aumône"
+    },
+    {
+      "id": "line-fetes",
+      "type": "dépense",
+      "nom": "Fêtes",
+      "categorie": "Fêtes",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Tabaski, Korite, Noël"
+    },
+    {
+      "id": "line-abonnements",
+      "type": "dépense",
+      "nom": "Abonnements",
+      "categorie": "Abonnements",
+      "proprietaire": "Foyer",
+      "defaultAmount": 0,
+      "schedules": [],
+      "overrides": {},
+      "overridesReel": {},
+      "actif": true,
+      "dateDebut": "2026-05",
+      "dateFin": "",
+      "notes": "Netflix, Apple TV, Amazon Prime, YouTube Premium, Google One, Dropbox"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "livret-a-mandiaye",
+      "nom": "Livret A Mandiaye",
+      "proprietaire": "Mandiaye",
+      "typeCompte": "Livret A",
+      "soldeDepart": 2000,
+      "versementAuto": 200,
+      "soldeReel": 2000,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 2000
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 2000
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 2000
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 2000
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 2000
+        }
+      ]
+    },
+    {
+      "id": "livret-a-julie",
+      "nom": "Livret A Julie",
+      "proprietaire": "Julie",
+      "typeCompte": "Livret A",
+      "soldeDepart": 2800,
+      "versementAuto": 200,
+      "soldeReel": 2800,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 2800
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 2800
+        }
+      ]
+    },
+    {
+      "id": "pel-julie",
+      "nom": "PEL Julie",
+      "proprietaire": "Julie",
+      "typeCompte": "PEL",
+      "soldeDepart": 5625,
+      "versementAuto": 50,
+      "soldeReel": 5625,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "2,5 %, fin 2029",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 5625
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 5625
+        }
+      ]
+    },
+    {
+      "id": "epargne-salma",
+      "nom": "Épargne Salma",
+      "proprietaire": "Enfants",
+      "typeCompte": "Enfant",
+      "soldeDepart": 3744,
+      "versementAuto": 50,
+      "soldeReel": 3744,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 3744
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 3744
+        }
+      ]
+    },
+    {
+      "id": "epargne-awa",
+      "nom": "Épargne Awa",
+      "proprietaire": "Enfants",
+      "typeCompte": "Enfant",
+      "soldeDepart": 1732,
+      "versementAuto": 30,
+      "soldeReel": 1732,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 1732
+        },
+        {
+          "date": "2026-05-01",
+          "valeur": 1732
+        }
+      ]
+    },
+    {
+      "id": "epargne-salif",
+      "nom": "Épargne Salif",
+      "proprietaire": "Enfants",
+      "typeCompte": "Enfant",
+      "soldeDepart": 2725,
+      "versementAuto": 30,
+      "soldeReel": 2725,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 2725
+        }
+      ]
+    },
+    {
+      "id": "pea-compte",
+      "nom": "PEA",
+      "proprietaire": "Foyer",
+      "typeCompte": "PEA",
+      "soldeDepart": 0,
+      "versementAuto": 0,
+      "soldeReel": 0,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "500 €/mois dès août 2026",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 0
+        }
+      ]
+    },
+    {
+      "id": "pee",
+      "nom": "PEE",
+      "proprietaire": "Mandiaye",
+      "typeCompte": "PEE",
+      "soldeDepart": 47332,
+      "versementAuto": 0,
+      "soldeReel": 47332,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "Mise à jour trimestrielle",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 47332
+        }
+      ]
+    },
+    {
+      "id": "locatif",
+      "nom": "Investissement locatif",
+      "proprietaire": "Foyer",
+      "typeCompte": "Immobilier",
+      "soldeDepart": 0,
+      "versementAuto": 0,
+      "soldeReel": 0,
+      "dateMaj": "2026-05-01",
+      "objectif": 0,
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 0
+        }
+      ]
+    }
+  ],
+  "patrimoine": [
+    {
+      "id": "rp",
+      "nom": "Résidence principale Eulmont",
+      "type": "immobilier",
+      "valeur": 370000,
+      "dette": 194226,
+      "proprietaire": "Foyer",
+      "dateMaj": "2026-05-01",
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 370000
+        }
+      ]
+    },
+    {
+      "id": "maison-sn",
+      "nom": "Maison Sénégal",
+      "type": "immobilier",
+      "valeur": 150000,
+      "dette": 0,
+      "proprietaire": "Sénégal",
+      "dateMaj": "2026-05-01",
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 150000
+        }
+      ]
+    },
+    {
+      "id": "terrains-sn",
+      "nom": "2 terrains Sénégal",
+      "type": "terrain",
+      "valeur": 10670,
+      "dette": 0,
+      "proprietaire": "Sénégal",
+      "dateMaj": "2026-05-01",
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 10670
+        }
+      ]
+    },
+    {
+      "id": "pee-pat",
+      "nom": "PEE Demathieu Bard",
+      "type": "PEE",
+      "valeur": 47332,
+      "dette": 0,
+      "proprietaire": "Mandiaye",
+      "dateMaj": "2026-05-01",
+      "notes": "",
+      "historique": [
+        {
+          "date": "2026-05-01",
+          "valeur": 47332
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "immo",
+      "nom": "Lissage immo",
+      "mensualite": 1031,
+      "capital": 194226,
+      "taux": 2.1,
+      "dateDebut": "2026-05",
+      "dateFin": "2045-12",
+      "type": "Immobilier",
+      "actifLie": "Résidence principale",
+      "notes": ""
+    },
+    {
+      "id": "conso",
+      "nom": "Prêt conso",
+      "mensualite": 798,
+      "capital": 2394,
+      "taux": 4.2,
+      "dateDebut": "2024-01",
+      "dateFin": "2026-07",
+      "type": "Consommation",
+      "actifLie": "",
+      "notes": ""
+    },
+    {
+      "id": "vehicule",
+      "nom": "Véhicule",
+      "mensualite": 196,
+      "capital": 11760,
+      "taux": 3.5,
+      "dateDebut": "2026-05",
+      "dateFin": "2031-12",
+      "type": "Auto",
+      "actifLie": "Véhicule",
+      "notes": ""
+    },
+    {
+      "id": "eco",
+      "nom": "Éco-prêt 0 %",
+      "mensualite": 36,
+      "capital": 3600,
+      "taux": 0,
+      "dateDebut": "2026-05",
+      "dateFin": "2034-12",
+      "type": "Travaux",
+      "actifLie": "Résidence principale",
+      "notes": ""
+    }
+  ],
+  "mouvements": [],
+  "actions": [
+    {
+      "id": "act-sw95909",
+      "titre": "Mettre à jour la valeur PEE",
+      "categorie": "Épargne",
+      "priorite": "haute",
+      "echeance": "2026-06-30",
+      "statut": "à faire",
+      "onglet": "Épargne",
+      "note": "",
+      "archive": false
+    },
+    {
+      "id": "act-hmfbtck",
+      "titre": "Préparer fin prêt conso",
+      "categorie": "Crédits",
+      "priorite": "haute",
+      "echeance": "2026-07-31",
+      "statut": "en cours",
+      "onglet": "Crédits",
+      "note": "",
+      "archive": false
+    },
+    {
+      "id": "act-vy1dsxj",
+      "titre": "Activer suivi loyer Sénégal",
+      "categorie": "Revenus",
+      "priorite": "moyenne",
+      "echeance": "2026-11-01",
+      "statut": "à faire",
+      "onglet": "Revenus",
+      "note": "",
+      "archive": false
+    }
+  ],
+  "plan": [
+    {
+      "id": "jalon-oa0dgj8",
+      "titre": "Fin prêt conso",
+      "date": "2026-07-31",
+      "statut": "en cours",
+      "categorie": "Crédits",
+      "priorite": "haute",
+      "description": "Libérer 798 €/mois",
+      "actions": "",
+      "progression": 30
+    },
+    {
+      "id": "jalon-0u3wlvd",
+      "titre": "Loyer Sénégal",
+      "date": "2026-11-01",
+      "statut": "à faire",
+      "categorie": "Revenus",
+      "priorite": "haute",
+      "description": "Démarrer revenu passif 610 €/mois",
+      "actions": "",
+      "progression": 30
+    },
+    {
+      "id": "jalon-nsb284v",
+      "titre": "PEA 500 €/mois",
+      "date": "2026-08-01",
+      "statut": "à faire",
+      "categorie": "Investissement",
+      "priorite": "moyenne",
+      "description": "Automatiser versement ETF",
+      "actions": "",
+      "progression": 30
+    }
+  ],
+  "serre": {
+    "mouvements": [],
+    "stock": [],
+    "notes": "Module autonome de suivi recettes, dépenses et production."
+  },
+  "settings": {
+    "householdName": "Foyer Diallo",
+    "brandInitials": "FD",
+    "subtitle": "Pilotage financier",
+    "currency": "EUR",
+    "country": "France",
+    "mainGoal": "Liberté financière familiale",
+    "horizonYears": 5,
+    "startMonth": "2026-05",
+    "members": [
+      {
+        "id": "foyer",
+        "nom": "Foyer",
+        "role": "Foyer",
+        "actif": true
+      },
+      {
+        "id": "mandiaye",
+        "nom": "Mandiaye",
+        "role": "Adulte",
+        "actif": true
+      },
+      {
+        "id": "julie",
+        "nom": "Julie",
+        "role": "Adulte",
+        "actif": true
+      },
+      {
+        "id": "enfants",
+        "nom": "Enfants",
+        "role": "Enfants",
+        "actif": true
+      },
+      {
+        "id": "senegal",
+        "nom": "Sénégal",
+        "role": "Patrimoine",
+        "actif": true
+      }
+    ],
+    "categories": {
+      "revenu": [
+        "Salaire",
+        "Variable",
+        "Allocation",
+        "Passif",
+        "Annexe"
+      ],
+      "dépense": [
+        "Abonnements ponctuels",
+        "Achats Sénégal",
+        "Activités/sport enfants",
+        "Amazon Prime",
+        "Apple TV",
+        "Autres",
+        "Boucherie",
+        "Boulangerie",
+        "Cadeaux",
+        "Cantine",
+        "Carburant",
+        "Cinéma",
+        "Courses",
+        "Cultures/livres/DVD",
+        "Dentiste",
+        "Dons",
+        "Dropbox",
+        "Déco/meubles",
+        "Eau",
+        "Envoi famille",
+        "Fournitures scolaires",
+        "Google One",
+        "Granulets",
+        "Imprévus",
+        "Inscription École/Univ",
+        "Jeux",
+        "Korite",
+        "Livraison repas",
+        "Marché",
+        "Médecin",
+        "Netflix",
+        "Noël",
+        "Optique",
+        "Parking",
+        "Pharmacie",
+        "Potager",
+        "Produits ménagers",
+        "Péage",
+        "Restaurant",
+        "Réparation/Bricolage",
+        "Sorties",
+        "Sorties enfants",
+        "Sports/Fitness",
+        "Tabaski",
+        "Taxi/VTC",
+        "Train/RER",
+        "Vacances",
+        "Vêtements/chaussures enfants",
+        "YouTube Premium",
+        "Électroménager",
+        "Énergie"
+      ],
+      "crédit": [
+        "Immobilier",
+        "Consommation",
+        "Auto",
+        "Travaux"
+      ],
+      "épargne": [
+        "Livret A",
+        "PEL",
+        "PEA",
+        "PEE",
+        "Enfant",
+        "Investissement",
+        "Immobilier"
+      ]
+    },
+    "assumptions": {
+      "inflation": 2,
+      "rendementETF": 5,
+      "tauxImmo": 3.5,
+      "croissanceRevenus": 1
+    },
+    "mode": "personnel",
+    "groupesMobiles": [
+      {
+        "nom": "Alimentation",
+        "ligneSuivi": "Alimentation",
+        "cats": [
+          "Courses",
+          "Restaurant",
+          "Boulangerie",
+          "Marché",
+          "Boucherie",
+          "Livraison repas"
+        ]
+      },
+      {
+        "nom": "Consommation",
+        "ligneSuivi": "Consommation",
+        "cats": [
+          "Énergie",
+          "Eau",
+          "Granulets"
+        ]
+      },
+      {
+        "nom": "Santé",
+        "ligneSuivi": "Santé",
+        "cats": [
+          "Pharmacie",
+          "Dentiste",
+          "Optique",
+          "Médecin"
+        ]
+      },
+      {
+        "nom": "Transport",
+        "ligneSuivi": "Transport",
+        "cats": [
+          "Taxi/VTC",
+          "Carburant",
+          "Péage",
+          "Train/RER",
+          "Parking"
+        ]
+      },
+      {
+        "nom": "Maison",
+        "ligneSuivi": "Maison",
+        "cats": [
+          "Réparation/Bricolage",
+          "Électroménager",
+          "Produits ménagers",
+          "Déco/meubles"
+        ]
+      },
+      {
+        "nom": "Enfants",
+        "ligneSuivi": "École / enfants",
+        "cats": [
+          "Inscription École/Univ",
+          "Fournitures scolaires",
+          "Activités/sport enfants",
+          "Vêtements/chaussures enfants",
+          "Cantine",
+          "Sorties enfants"
+        ]
+      },
+      {
+        "nom": "Loisirs",
+        "ligneSuivi": "Loisirs",
+        "cats": [
+          "Potager",
+          "Cinéma",
+          "Sorties",
+          "Sports/Fitness",
+          "Vacances",
+          "Cultures/livres/DVD",
+          "Jeux"
+        ]
+      },
+      {
+        "nom": "Sénégal",
+        "ligneSuivi": "Sénégal",
+        "cats": [
+          "Envoi famille",
+          "Achats Sénégal"
+        ]
+      },
+      {
+        "nom": "Divers",
+        "ligneSuivi": "Dépenses non planifiées",
+        "cats": [
+          "Cadeaux",
+          "Imprévus",
+          "Abonnements ponctuels"
+        ]
+      },
+      {
+        "nom": "Dons, Aumône",
+        "ligneSuivi": "Dons, Aumône",
+        "cats": [
+          "Dons"
+        ]
+      },
+      {
+        "nom": "Fêtes",
+        "ligneSuivi": "Fêtes",
+        "cats": [
+          "Tabaski",
+          "Korite",
+          "Noël"
+        ]
+      },
+      {
+        "nom": "Abonnements",
+        "ligneSuivi": "Abonnements",
+        "cats": [
+          "Netflix",
+          "Apple TV",
+          "Amazon Prime",
+          "YouTube Premium",
+          "Google One",
+          "Dropbox",
+          "Autres"
+        ]
+      }
+    ]
+  }
+}

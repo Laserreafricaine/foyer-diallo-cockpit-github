@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cockpit financier familial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/tables.css"><link rel="stylesheet" href="css/forms.css"><link rel="stylesheet" href="css/serre-africaine.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">FD</span><div><strong>Foyer Diallo</strong><small>Pilotage financier</small></div></div>
+    <nav id="nav"></nav>
+    <div class="side-actions"><button id="driveSyncBtn" onclick="App.driveConnect()" style="background:linear-gradient(135deg,#2457ff,#1a3fb5);box-shadow:0 8px 18px rgba(36,87,255,.2)">☁ Connecter Drive</button><button onclick="App.viderCache()" style="background:linear-gradient(135deg,#475569,#334155);box-shadow:0 8px 18px rgba(51,65,85,.2)">⟳ Vider cache</button><button onclick="App.syncPreview()" style="background:linear-gradient(135deg,#2457ff,#1a3fb5);box-shadow:0 8px 18px rgba(36,87,255,.2)">↻ Synchroniser</button><button onclick="App.cloturerMois()" style="background:linear-gradient(135deg,#138a5b,#0f6b46);box-shadow:0 8px 18px rgba(19,138,91,.25)">Clôturer le mois</button><button id="saveBtn" onclick="App.saveWithFeedback()">Enregistrer</button><button onclick="App.driveExportVersion()">Sauvegarder une version</button><label class="import">Importer JSON<input type="file" accept="application/json" onchange="App.importJSON(event)"></label></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><h1 id="pageTitle">Dashboard</h1><p id="pageSubtitle">Vue consolidée du foyer</p></div><div class="month-chip"><button onclick="App.shiftMonth(-1)">‹</button><strong id="currentMonthLabel"></strong><button onclick="App.shiftMonth(1)">›</button></div></header>
+    <section id="app"></section>
+  </main>
+  <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h2 id="modalTitle"></h2><button onclick="App.closeModal()">×</button></div><div id="modalBody"></div></div></div>
+  <script src="js/state.js"></script><script src="js/storage.js"></script><script src="js/engine.js"></script><script src="js/navigation.js"></script><script src="js/dashboard.js"></script><script src="js/suivi.js"></script><script src="js/mouvements.js"></script><script src="js/patrimoine.js"></script><script src="js/epargne.js"></script><script src="js/credits.js"></script><script src="js/simulateurs.js"></script><script src="js/actions.js"></script><script src="js/serre-africaine.js"></script><script src="js/parametres.js"></script>
+  <script src="js/drive.js"></script>
+</body>
+</html>
