@@ -145,12 +145,12 @@
           <div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:12px;padding:12px;text-align:center">
             <div style="font-size:24px;margin-bottom:6px">💻</div>
             <strong style="font-size:13px;color:#1e40af">Cockpit</strong>
-            <p style="font-size:11px;color:#64748b;margin-top:4px">Netlify · spectacular-parfait</p>
+            <p style="font-size:11px;color:#64748b;margin-top:4px">GitHub Pages · laserreafricaine.github.io/foyer-diallo-cockpit-github</p>
           </div>
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px;text-align:center">
             <div style="font-size:24px;margin-bottom:6px">📱</div>
             <strong style="font-size:13px;color:#166534">PWA Mobile</strong>
-            <p style="font-size:11px;color:#64748b;margin-top:4px">GitHub Pages · laserreafricaine.github.io</p>
+            <p style="font-size:11px;color:#64748b;margin-top:4px">GitHub Pages · laserreafricaine.github.io/foyer-diallo-cockpit-github</p>
           </div>
           <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px;text-align:center">
             <div style="font-size:24px;margin-bottom:6px">⚙️</div>
@@ -197,8 +197,8 @@
         <div style="font-size:13px;color:#475569;line-height:1.9">
           <strong style="color:#1b5e20">Cockpit (foyer-diallo-cockpit) :</strong><br>
           <strong>1.</strong> Modifier les fichiers dans le dossier foyer-diallo-cockpit<br>
-          <strong>2.</strong> Sur Netlify → spectacular-parfait → "choose a folder" → sélectionner le dossier<br>
-          <strong>3.</strong> Netlify redéploie en ~30 secondes
+          <strong>2.</strong> GitHub Desktop → Commit to main → Push origin<br>
+          <strong>3.</strong> GitHub Pages redéploie automatiquement en ~2 minutes
         </div>
         <div style="margin-top:10px;background:#fffbf0;border:1px solid #fde68a;border-radius:10px;padding:10px;font-size:11px;color:#92400e">
           ⚠️ Si GitHub Desktop dit "0 changed files" : vérifier que les fichiers sont dans le bon dossier du repo.
@@ -235,7 +235,7 @@
           </div>
           <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:10px">
             <strong style="color:#991b1b">Le bouton Drive reste déconnecté</strong>
-            <p style="color:#64748b;margin-top:4px">Ouvrir le cockpit depuis spectacular-parfait-03d6d9.netlify.app (pas en local). Cliquer "☁ Connecter Drive" → autoriser Google → le bouton passe en vert.</p>
+            <p style="color:#64748b;margin-top:4px">Ouvrir le cockpit depuis laserreafricaine.github.io/foyer-diallo-cockpit-github (pas en local). Cliquer "☁ Connecter Drive" → autoriser Google → le bouton passe en vert.</p>
           </div>
           <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:10px">
             <strong style="color:#991b1b">Les données ne se chargent pas sur un nouveau PC</strong>
