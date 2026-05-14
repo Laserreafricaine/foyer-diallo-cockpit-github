@@ -335,17 +335,31 @@
 })();
 
 
-
-/* Export budget prévu mobile - ajouté pour la PWA mobile */
+/* Export budget prévu mobile - PWA mobile */
 function exportBudgetMobile(){
   try{
-    if(!window.A || !A.state){
-      alert("Données cockpit indisponibles.");
+    const Aref = window.App || window.A;
+
+    if(!Aref){
+      alert("Application cockpit non trouvée.");
       return;
     }
 
-    const month = A.currentMonth || new Date().toISOString().slice(0,7);
+    if(!Aref.state){
+      if(typeof Aref.load === "function") Aref.load();
+    }
+
+    if(!Aref.state){
+      alert("Données cockpit indisponibles après chargement.");
+      return;
+    }
+
+    const state = Aref.state || {};
+    const settings = state.settings || {};
+    const month = Aref.currentMonth || new Date().toISOString().slice(0,7);
     const budgetsMap = new Map();
+
+    const normalize = v => String(v || "").trim().toLowerCase();
 
     const addBudget = (categorie, montant) => {
       const name = String(categorie || "Autre").trim();
@@ -354,40 +368,48 @@ function exportBudgetMobile(){
       budgetsMap.set(name, (budgetsMap.get(name) || 0) + amount);
     };
 
-    /*
-      Priorité : Groupes mobiles.
-      Le budget mobile doit être au niveau des grands ensembles
-      visibles dans la PWA, pas au niveau des sous-catégories.
-    */
-    const groupesMobiles = (A.state.settings && A.state.settings.groupesMobiles) || [];
+    const lineAmount = (line) => {
+      if(typeof Aref.lineAmount === "function") return Number(Aref.lineAmount(line, month) || 0);
 
-    if(Array.isArray(groupesMobiles) && groupesMobiles.length && Array.isArray(A.state.lines)){
+      if(line.overrides && line.overrides[month] !== undefined) {
+        return Number(line.overrides[month] || 0);
+      }
+
+      if(line.schedules && Array.isArray(line.schedules) && line.schedules.length){
+        const sorted = [...line.schedules].sort((a,b)=>String(a.from||"").localeCompare(String(b.from||"")));
+        let val = Number(line.defaultAmount || 0);
+        sorted.forEach(s => {
+          if(String(s.from || "") <= month) val = Number(s.amount || 0);
+        });
+        return val;
+      }
+
+      return Number(line.defaultAmount || line.amount || line.prevu || 0);
+    };
+
+    const lines = Array.isArray(state.lines) ? state.lines : [];
+    const groupesMobiles = Array.isArray(settings.groupesMobiles) ? settings.groupesMobiles : [];
+
+    /*
+      Priorité : exporter les grands ensembles mobiles.
+      Chaque groupe mobile devient une catégorie budget côté PWA mobile.
+    */
+    if(groupesMobiles.length && lines.length){
       groupesMobiles.forEach(groupe => {
         const nomGroupe = groupe.nom || groupe.name || "Autre";
-        const ligneSuivi = String(groupe.ligneSuivi || "").toLowerCase();
-        const cats = Array.isArray(groupe.cats) ? groupe.cats : [];
-
+        const ligneSuivi = normalize(groupe.ligneSuivi);
+        const cats = Array.isArray(groupe.cats) ? groupe.cats.map(normalize) : [];
         let total = 0;
 
-        /* Cas recommandé : groupe mobile relié à une ligne de suivi */
         if(ligneSuivi){
-          const ligne = A.state.lines.find(l => String(l.nom || l.name || "").toLowerCase() === ligneSuivi);
-          if(ligne){
-            total = typeof A.lineAmount === "function"
-              ? A.lineAmount(ligne, month)
-              : Number(ligne.defaultAmount || ligne.amount || ligne.prevu || 0);
-          }
+          const linkedLine = lines.find(l => normalize(l.nom || l.name) === ligneSuivi);
+          if(linkedLine) total = lineAmount(linkedLine);
         }
 
-        /* Fallback : somme des lignes dont la catégorie est dans le groupe */
         if(!total && cats.length){
-          A.state.lines.forEach(line => {
-            const cat = line.category || line.categorie || line.nom || line.name || "";
-            if(cats.map(c => String(c).toLowerCase()).includes(String(cat).toLowerCase())){
-              total += typeof A.lineAmount === "function"
-                ? A.lineAmount(line, month)
-                : Number(line.defaultAmount || line.amount || line.prevu || 0);
-            }
+          lines.forEach(line => {
+            const cat = normalize(line.category || line.categorie || line.nom || line.name);
+            if(cats.includes(cat)) total += lineAmount(line);
           });
         }
 
@@ -395,18 +417,18 @@ function exportBudgetMobile(){
       });
     }
 
-    /* Fallback si aucun groupe mobile n'est configuré */
-    if(!budgetsMap.size && Array.isArray(A.state.lines)){
-      A.state.lines.forEach(line => {
+    /*
+      Fallback : exporter directement les lignes de dépenses du suivi.
+    */
+    if(!budgetsMap.size && lines.length){
+      lines.forEach(line => {
         if(line.actif === false) return;
-        if(line.type && String(line.type).toLowerCase() !== "dépense" && String(line.type).toLowerCase() !== "depense") return;
+
+        const type = normalize(line.type);
+        if(type && type !== "dépense" && type !== "depense") return;
 
         const categorie = line.category || line.categorie || line.nom || line.name || "Autre";
-        const montant = typeof A.lineAmount === "function"
-          ? A.lineAmount(line, month)
-          : Number(line.defaultAmount || line.amount || line.prevu || 0);
-
-        addBudget(categorie, montant);
+        addBudget(categorie, lineAmount(line));
       });
     }
 
@@ -424,18 +446,13 @@ function exportBudgetMobile(){
       budgets
     };
 
-    const blob = new Blob(
-      [JSON.stringify(payload, null, 2)],
-      { type: "application/json" }
-    );
-
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "budget-mobile.json";
     document.body.appendChild(a);
     a.click();
     a.remove();
-
     setTimeout(() => URL.revokeObjectURL(a.href), 500);
 
     alert("budget-mobile.json exporté : " + budgets.length + " catégorie(s).");
