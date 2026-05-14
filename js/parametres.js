@@ -99,11 +99,18 @@
       <div class="card">
         <div class="section-title">
           <h3>Groupes mobiles → Suivi</h3>
-          <button onclick="App.editGroupe()">+ Nouveau groupe</button><button class="primary" onclick="exportBudgetMobile()" style="margin-left:10px;background:#15945f;">Exporter budget prévu mobile</button>
+          <button onclick="App.editGroupe()">+ Nouveau groupe</button>
         </div>
         <p class="muted" style="margin-bottom:14px;font-size:13px">
           Définissez comment les catégories de la PWA sont regroupées dans les lignes du suivi mensuel.
         </p>
+        <div style="margin:0 0 18px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <button id="exportBudgetMobileBtn" onclick="exportBudgetMobile()" class="primary" style="background:linear-gradient(135deg,#15945f,#0f6b46);color:#fff;font-weight:800;border:none;border-radius:14px;padding:12px 18px;box-shadow:0 8px 18px rgba(21,148,95,.20);">
+            Exporter budget prévu mobile
+          </button>
+          <span class="muted" style="font-size:13px;">Génère le fichier budget-mobile.json pour la PWA mobile.</span>
+        </div>
+
         ${groupes.length ? groupes.map((g,i)=>`
           <div class="groupe-card">
             <div class="groupe-head">
