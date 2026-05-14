@@ -104,13 +104,6 @@
         <p class="muted" style="margin-bottom:14px;font-size:13px">
           Définissez comment les catégories de la PWA sont regroupées dans les lignes du suivi mensuel.
         </p>
-        <div style="margin:0 0 18px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-          <button id="exportBudgetMobileBtn" onclick="exportBudgetMobile()" class="primary" style="background:linear-gradient(135deg,#15945f,#0f6b46);color:#fff;font-weight:800;border:none;border-radius:14px;padding:12px 18px;box-shadow:0 8px 18px rgba(21,148,95,.20);">
-            Exporter budget prévu mobile
-          </button>
-          <span class="muted" style="font-size:13px;">Génère le fichier budget-mobile.json pour la PWA mobile.</span>
-        </div>
-
         ${groupes.length ? groupes.map((g,i)=>`
           <div class="groupe-card">
             <div class="groupe-head">
@@ -456,3 +449,61 @@
     A.save(); A.renderParametres();
   };
 })();
+
+
+
+/* Bouton export budget prévu mobile - injection robuste */
+(function(){
+  function addExportBudgetMobileButton(){
+    try{
+      const app = document.getElementById('app');
+      if(!app) return;
+
+      const pageTitle = document.getElementById('pageTitle');
+      const isParametres = pageTitle && String(pageTitle.textContent || '').toLowerCase().includes('param');
+      const isGroupesMobiles = app.textContent && app.textContent.includes('GROUPES MOBILES');
+      if(!isParametres || !isGroupesMobiles) return;
+
+      if(document.getElementById('exportBudgetMobileBtn')) return;
+
+      const titles = Array.from(app.querySelectorAll('h3,strong,h2'));
+      const targetTitle = titles.find(el => String(el.textContent || '').includes('GROUPES MOBILES'));
+      if(!targetTitle) return;
+
+      const container = document.createElement('div');
+      container.id = 'exportBudgetMobileWrap';
+      container.style.cssText = 'margin:14px 0 18px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;';
+      container.innerHTML = `
+        <button id="exportBudgetMobileBtn"
+          onclick="exportBudgetMobile()"
+          style="background:linear-gradient(135deg,#15945f,#0f6b46);color:white;border:0;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(21,148,95,.22);">
+          Exporter budget prévu mobile
+        </button>
+        <span style="color:#64748b;font-size:13px;">Génère le fichier budget-mobile.json pour la PWA mobile.</span>
+      `;
+
+      const card = targetTitle.closest('.card, .panel, div') || targetTitle.parentElement;
+      if(card){
+        const paragraph = Array.from(card.querySelectorAll('p')).find(p => String(p.textContent || '').includes('PWA'));
+        if(paragraph && paragraph.parentNode){
+          paragraph.parentNode.insertBefore(container, paragraph.nextSibling);
+        }else{
+          targetTitle.parentNode.insertBefore(container, targetTitle.parentNode.children[1] || null);
+        }
+      }
+    }catch(e){
+      console.error('Erreur bouton export budget mobile', e);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    addExportBudgetMobileButton();
+    setInterval(addExportBudgetMobileButton, 500);
+  });
+
+  document.addEventListener('click', () => {
+    setTimeout(addExportBudgetMobileButton, 50);
+    setTimeout(addExportBudgetMobileButton, 300);
+  });
+})();
+
