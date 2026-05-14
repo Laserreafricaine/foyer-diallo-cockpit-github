@@ -418,3 +418,144 @@
     }
   };
 })();
+/* Export budget prévu mobile - PWA mobile */
+(function(){
+  const A = window.App;
+  if(!A) return;
+
+  A.exportBudgetMobile = function(){
+
+    try{
+
+      A.ensureSettings && A.ensureSettings();
+
+      if(!A.state || !Array.isArray(A.state.lines)){
+        alert('Données cockpit indisponibles');
+        return;
+      }
+
+      const month =
+        A.currentMonth ||
+        new Date().toISOString().slice(0,7);
+
+      const wantedOrder = [
+        'Vie courante',
+        'Charges',
+        'Mobilité',
+        'Santé',
+        'Enfants',
+        'Variable'
+      ];
+
+      const totals = {};
+
+      wantedOrder.forEach(k => totals[k] = 0);
+
+      const norm = v =>
+        String(v || '')
+          .trim()
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g,'');
+
+      const lines = A.state.lines.filter(line => {
+
+        const t = norm(line.type);
+
+        return (
+          line.actif !== false &&
+          (t === 'depense' || t === 'dépense')
+        );
+
+      });
+
+      const groupes =
+        ((A.state.settings || {}).groupesMobiles || []);
+
+      groupes.forEach(groupe => {
+
+        if(!groupe || !groupe.nom) return;
+
+        let total = 0;
+
+        if(groupe.ligneSuivi){
+
+          const line = lines.find(l =>
+            norm(l.nom) === norm(groupe.ligneSuivi)
+          );
+
+          if(line){
+
+            total =
+              Number(
+                A.lineAmountPlanned
+                  ? A.lineAmountPlanned(line, month)
+                  : 0
+              ) || 0;
+
+          }
+        }
+
+        if(total > 0){
+
+          totals[groupe.nom] =
+            (totals[groupe.nom] || 0) + total;
+
+        }
+
+      });
+
+      const budgets = wantedOrder
+        .map(categorie => ({
+          categorie,
+          prevu:
+            Math.round(
+              (totals[categorie] || 0) * 100
+            ) / 100
+        }))
+        .filter(x => x.prevu > 0);
+
+      const payload = {
+        mois: month,
+        source: 'cockpit',
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        budgets
+      };
+
+      const blob = new Blob(
+        [JSON.stringify(payload, null, 2)],
+        { type:'application/json' }
+      );
+
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+
+      a.href = url;
+      a.download = 'budget-mobile.json';
+
+      document.body.appendChild(a);
+
+      a.click();
+
+      a.remove();
+
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+      }, 500);
+
+      alert('budget-mobile.json exporté');
+
+    }
+    catch(err){
+
+      console.error(err);
+
+      alert('Erreur export budget mobile');
+
+    }
+
+  };
+
+})();
