@@ -99,7 +99,7 @@
       <div class="card">
         <div class="section-title">
           <h3>Groupes mobiles → Suivi</h3>
-          <button onclick="App.editGroupe()">+ Nouveau groupe</button>
+          <button onclick="App.editGroupe()">+ Nouveau groupe</button><button class="primary" onclick="exportBudgetMobile()" style="margin-left:10px;background:#15945f;">Exporter budget prévu mobile</button>
         </div>
         <p class="muted" style="margin-bottom:14px;font-size:13px">
           Définissez comment les catégories de la PWA sont regroupées dans les lignes du suivi mensuel.
