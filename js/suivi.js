@@ -333,3 +333,51 @@
     A.save(); A.renderSuivi();
   };
 })();
+function exportBudgetMobile(){
+
+  try{
+
+    const budgets = [];
+
+    if(window.A && A.state && Array.isArray(A.state.lines)){
+
+      A.state.lines.forEach(line => {
+
+        budgets.push({
+          categorie: line.category || line.categorie || "Autre",
+          prevu: Number(line.amount || line.prevu || 0)
+        });
+
+      });
+
+    }
+
+    const payload = {
+      mois: new Date().toISOString().slice(0,7),
+      budgets
+    };
+
+    const blob = new Blob(
+      [JSON.stringify(payload,null,2)],
+      { type:'application/json' }
+    );
+
+    const a = document.createElement('a');
+
+    a.href = URL.createObjectURL(blob);
+
+    a.download = 'budget-mobile.json';
+
+    a.click();
+
+    alert('budget-mobile.json exporté');
+
+  }catch(err){
+
+    console.error(err);
+
+    alert('Erreur export budget mobile');
+
+  }
+
+}
