@@ -336,130 +336,85 @@
 
 
 /* Export budget prévu mobile - PWA mobile */
-function exportBudgetMobile(){
-  try{
-    const Aref = window.App || window.A;
+(function(){
+  const A = window.App;
 
-    if(!Aref){
-      alert("Application cockpit non trouvée.");
-      return;
-    }
-
-    if(!Aref.state){
-      if(typeof Aref.load === "function") Aref.load();
-    }
-
-    if(!Aref.state){
-      alert("Données cockpit indisponibles après chargement.");
-      return;
-    }
-
-    const state = Aref.state || {};
-    const settings = state.settings || {};
-    const month = Aref.currentMonth || new Date().toISOString().slice(0,7);
-    const budgetsMap = new Map();
-
-    const normalize = v => String(v || "").trim().toLowerCase();
-
-    const addBudget = (categorie, montant) => {
-      const name = String(categorie || "Autre").trim();
-      const amount = Number(montant || 0);
-      if(!name) return;
-      budgetsMap.set(name, (budgetsMap.get(name) || 0) + amount);
-    };
-
-    const lineAmount = (line) => {
-      if(typeof Aref.lineAmount === "function") return Number(Aref.lineAmount(line, month) || 0);
-
-      if(line.overrides && line.overrides[month] !== undefined) {
-        return Number(line.overrides[month] || 0);
+  A.exportBudgetMobile = function(){
+    try{
+      A.ensureSettings && A.ensureSettings();
+      if(!A.state || !Array.isArray(A.state.lines)){
+        alert('Données cockpit indisponibles. Rechargez le cockpit puis réessayez.');
+        return;
       }
 
-      if(line.schedules && Array.isArray(line.schedules) && line.schedules.length){
-        const sorted = [...line.schedules].sort((a,b)=>String(a.from||"").localeCompare(String(b.from||"")));
-        let val = Number(line.defaultAmount || 0);
-        sorted.forEach(s => {
-          if(String(s.from || "") <= month) val = Number(s.amount || 0);
+      const month = A.currentMonth || (A.state.settings && A.state.settings.startMonth) || new Date().toISOString().slice(0,7);
+      const wantedOrder = ['Vie courante','Charges','Mobilité','Santé','Enfants','Variable'];
+      const budgetsMap = new Map(wantedOrder.map(name => [name, 0]));
+      const norm = v => String(v || '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      const canonical = name => wantedOrder.find(w => norm(w) === norm(name)) || String(name || '').trim();
+      const add = (name, amount) => {
+        const key = canonical(name || 'Variable');
+        if(!budgetsMap.has(key)) budgetsMap.set(key, 0);
+        budgetsMap.set(key, Number(budgetsMap.get(key) || 0) + Number(amount || 0));
+      };
+      const amountFor = line => Number(A.lineAmountPlanned ? A.lineAmountPlanned(line, month) : A.lineAmount(line, month) || 0);
+
+      const lines = A.state.lines.filter(line => {
+        const type = norm(line.type);
+        return line.actif !== false && (type === 'depense' || type === 'dépense');
+      });
+
+      const groupes = ((A.state.settings || {}).groupesMobiles || []).filter(g => g && g.nom);
+      if(groupes.length){
+        groupes.forEach(groupe => {
+          let total = 0;
+          if(groupe.ligneSuivi){
+            const linked = lines.find(line => norm(line.nom) === norm(groupe.ligneSuivi));
+            if(linked) total += amountFor(linked);
+          }
+          if(!total && Array.isArray(groupe.cats) && groupe.cats.length){
+            const cats = new Set(groupe.cats.map(norm));
+            lines.forEach(line => {
+              if(cats.has(norm(line.categorie)) || cats.has(norm(line.nom))) total += amountFor(line);
+            });
+          }
+          add(groupe.nom, total);
         });
-        return val;
+      }else{
+        lines.forEach(line => add(line.categorie || line.nom, amountFor(line)));
       }
 
-      return Number(line.defaultAmount || line.amount || line.prevu || 0);
-    };
-
-    const lines = Array.isArray(state.lines) ? state.lines : [];
-    const groupesMobiles = Array.isArray(settings.groupesMobiles) ? settings.groupesMobiles : [];
-
-    /*
-      Priorité : exporter les grands ensembles mobiles.
-      Chaque groupe mobile devient une catégorie budget côté PWA mobile.
-    */
-    if(groupesMobiles.length && lines.length){
-      groupesMobiles.forEach(groupe => {
-        const nomGroupe = groupe.nom || groupe.name || "Autre";
-        const ligneSuivi = normalize(groupe.ligneSuivi);
-        const cats = Array.isArray(groupe.cats) ? groupe.cats.map(normalize) : [];
-        let total = 0;
-
-        if(ligneSuivi){
-          const linkedLine = lines.find(l => normalize(l.nom || l.name) === ligneSuivi);
-          if(linkedLine) total = lineAmount(linkedLine);
-        }
-
-        if(!total && cats.length){
-          lines.forEach(line => {
-            const cat = normalize(line.category || line.categorie || line.nom || line.name);
-            if(cats.includes(cat)) total += lineAmount(line);
-          });
-        }
-
-        addBudget(nomGroupe, total);
-      });
-    }
-
-    /*
-      Fallback : exporter directement les lignes de dépenses du suivi.
-    */
-    if(!budgetsMap.size && lines.length){
-      lines.forEach(line => {
-        if(line.actif === false) return;
-
-        const type = normalize(line.type);
-        if(type && type !== "dépense" && type !== "depense") return;
-
-        const categorie = line.category || line.categorie || line.nom || line.name || "Autre";
-        addBudget(categorie, lineAmount(line));
-      });
-    }
-
-    const budgets = Array.from(budgetsMap.entries())
-      .map(([categorie, prevu]) => ({
+      const budgets = wantedOrder.map(categorie => ({
         categorie,
-        prevu: Number(prevu || 0)
-      }))
-      .filter(b => b.prevu > 0);
+        prevu: Math.round(Number(budgetsMap.get(categorie) || 0) * 100) / 100
+      })).filter(row => row.prevu > 0);
 
-    const payload = {
-      mois: month,
-      source: "cockpit",
-      exportedAt: new Date().toISOString(),
-      budgets
-    };
+      if(!budgets.length){
+        alert('Aucun budget prévu à exporter pour ' + month + '. Vérifiez les lignes de dépenses actives du suivi mensuel.');
+        return;
+      }
 
-    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "budget-mobile.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 500);
+      const payload = {
+        mois: month,
+        source: 'cockpit',
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        budgets
+      };
 
-    alert("budget-mobile.json exporté : " + budgets.length + " catégorie(s).");
-
-  }catch(err){
-    console.error(err);
-    alert("Erreur export budget mobile : " + (err && err.message ? err.message : err));
-  }
-}
-
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'budget-mobile.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 500);
+      alert('budget-mobile.json exporté : ' + budgets.length + ' catégorie(s).');
+    }catch(err){
+      console.error('Export budget mobile impossible', err);
+      alert('Erreur export budget mobile : ' + (err && err.message ? err.message : err));
+    }
+  };
+})();
